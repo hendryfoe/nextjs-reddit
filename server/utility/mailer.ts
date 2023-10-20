@@ -1,10 +1,13 @@
 import { OAuth2Client } from 'google-auth-library';
 import { createTransport } from 'nodemailer';
 
+// const templates = new Map();
+// templates.set('REDDIT_NEWSLETTER_LAYOUT', );
+
 export async function sendMail(
   to: string | string[] = 'expressmartkp@gmail.com',
   subject = 'Reddit Free App List',
-  text = 'I hope this message gets through!'
+  body = 'I hope this message gets through!'
 ) {
   const { accessToken } = await getGoogleAccessToken();
 
@@ -25,7 +28,7 @@ export async function sendMail(
     from: process.env.GMAIL_EMAIL,
     to,
     subject,
-    text
+    html: body
   });
 }
 

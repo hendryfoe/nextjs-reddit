@@ -1,7 +1,7 @@
 import { Endpoint } from '@constant/endpoint.constant';
 import { Headers } from 'node-fetch';
 import { request } from './server-request';
-import { camelCaseObject } from './utility';
+import { camelCaseObject } from '@utility/utility';
 
 export interface Authentication {
   accessToken: string;

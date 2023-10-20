@@ -1,6 +1,6 @@
 import { Endpoint } from '@constant/endpoint.constant';
-import { get } from '@utility/server-request';
-import { sendMail } from '@utility/mailer';
+import { get } from '@server/utility/server-request';
+import { sendMail } from '@server/utility/mailer';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 type ThreadEntity = {
@@ -28,7 +28,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     });
     const result = transformResponse(response);
 
-    if (mail) {
+    if (mail && req.method.toUpperCase() !== 'POST') {
       await sendMail();
     }
 
